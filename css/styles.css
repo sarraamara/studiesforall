@@ -1,0 +1,12 @@
+body {
+  padding: 70px; 
+  background-color: #F1F7F8;
+}
+.btn:focus{
+	box-shadow: none;
+}
+h2{
+   padding-top: 10px;
+   padding-bottom: 10px;
+   color:#dc493a;
+}
