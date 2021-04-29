@@ -1,3 +1,17 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['uname'])){
+    header('Location: index.php');
+}
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: index.php');
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,16 +34,16 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="index.html" class="nav-item nav-link active">Accueil</a>
+                <a href="indexLoggedIn.php" class="nav-item nav-link active">Accueil</a>
                 <div class="dropdown">
                 <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Fichiers lycée
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   
-                  <a class="dropdown-item" href="secondyearFiles.html">Seconde</a>
-                  <a class="dropdown-item" href="firstyearFiles.html">Première</a>
-                  <a class="dropdown-item" href="lastyearFiles.html">Terminale</a>
+                  <a class="dropdown-item" href="secondyearFilesLoggedIn.php">Seconde</a>
+                  <a class="dropdown-item" href="firstyearFilesLoggedIn.php">Première</a>
+                  <a class="dropdown-item" href="lastyearFilesLoggedIn.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -49,13 +63,17 @@
                 
             </div>
             <div class="navbar-nav ml-auto">
-                <a href="#" class="nav-item nav-link">Connexion</a>
+              <form method='post' action="">
+              <input type="submit" value="Logout" name="but_logout">
+                       </form>
+               
             </div>
         </div>
     </nav> 
   </header>
 
   <div id="main-content" class="container">
+
     <h2 class="text-left">Nouveautés</h2>
     <div>29/03/2021: Test long paragraph to see:up on catnip, yet bleghbleghvomit my furball really tie the room together, thug cat . Play riveting piece on synthesizer keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep  </div>
     <div>29/03/2021: Test keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep</div>
