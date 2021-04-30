@@ -1,3 +1,17 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['uname'])){
+    header('Location: index.php');
+}
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: index.php');
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,6 +21,10 @@
     <title>studiesforall</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+     <script src="js/jquery.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/ajax-utils.js"></script>
+    <script src="js/script.js"></script>
   </head>
 <body>
   
@@ -20,16 +38,16 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="index.php" class="nav-item nav-link">Accueil</a>
+                <a href="indexLoggedIn.php" class="nav-item nav-link">Accueil</a>
                 <div class="dropdown">
                 <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Fichiers lycée
                 </button>
                 <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
                   
-                  <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
-                  <a class="dropdown-item active" href="firstyearFiles.php">Première</a>
-                  <a class="dropdown-item" href="lastyearFiles.php">Terminale</a>
+                  <a class="dropdown-item" href="secondyearFilesLoggedIn.php">Seconde</a>
+                  <a class="dropdown-item" href="firstyearFilesLoggedIn.php">Première</a>
+                  <a class="dropdown-item active" href="lastyearFilesLoggedIn.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -46,26 +64,52 @@
                 <a href="#" class="nav-item nav-link">Olympiades</a>
                 <a href="#" class="nav-item nav-link">Don</a>
                 <a href="#" class="nav-item nav-link">Nous rejoindre</a>
-                
+                  
             </div>
             <div class="navbar-nav ml-auto">
-                <a href="loginpage.php" class="nav-item nav-link">Connexion</a>
+                <form method='post' action="">
+              <input type="submit" value="Logout" name="but_logout">
+                       </form>
             </div>
         </div>
     </nav> 
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-left">Fichiers première</h2>
-    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la première.</div>
-     <div>Matières:</div>
-      <ul>
-        <li><a href="#">Mathématiques</a></li>
-        <li><a href="#">Physique</a></li>
-        <li><a href="#">Java</a></li>
-        <li><a href="#">Python</a></li>
-        <li><a href="#">Anglais</a></li>
+    <h2 class="text-left">Mathématiques</h2>
+
+    <div class="upload-files"> 
+       <h3 class="text-center">Ajout de fichiers</h3>
+       <div><input type="file" id="myFile"></div>
+      <div>Indiquer le format:</div>
+      
+      <input type="radio" id="Cours" name="format" value="Cours"
+             checked>
+      <label for="Cours">Cours</label>
+      <input type="radio" id="Enregistrement des cours(Teams)" name="format" value="Enregistrement des cours(Teams)">
+      <label for="Enregistrement des cours(Teams)">Enregistrement des cours(Vidéo)</label>
+      <input type="radio" id="Exo" name="format" value="Exo">
+      <label for="Exo">Exo</label>
+      <input type="radio" id="Corrigé" name="format" value="Corrigé">
+      <label for="Corrigé">Corrigé</label>
+      <div class="text-right"><button onclick="addFileAndUpdateViewFunc()">Ajouter</button></div>
+    </div>
+    <script>
+      
+    </script>
+   <p id="demo"></p>
+   <ul>
+    <li>Cours(.ZIP/.RAR)
+      <ul id="coursListe">
+        
       </ul>
+    </li>
+    <li>Exos:</li>
+    <li>Corrigés:</li>
+    <li>Enregistrement des cours(Vidéo):</li>
+    </div>
+  </ul>
+ 
  </div>
 
   <footer class="panel-footer">

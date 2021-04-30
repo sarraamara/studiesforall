@@ -1,6 +1,7 @@
 <?php
 include "config.php";
 
+
 if(isset($_POST['but_submit'])){
 
     $uname = pg_escape_string($dbconn,$_POST['txt_uname']);

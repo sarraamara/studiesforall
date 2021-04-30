@@ -20,16 +20,16 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="index.php" class="nav-item nav-link">Accueil</a>
+                <a href="indexLoggedIn.php" class="nav-item nav-link">Accueil</a>
                 <div class="dropdown">
                 <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Fichiers lycée
                 </button>
                 <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
                   
-                  <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
-                  <a class="dropdown-item active" href="firstyearFiles.php">Première</a>
-                  <a class="dropdown-item" href="lastyearFiles.php">Terminale</a>
+                  <a class="dropdown-item" href="secondyearFilesLoggedIn.php">Seconde</a>
+                  <a class="dropdown-item" href="firstyearFilesLoggedIn.php">Première</a>
+                  <a class="dropdown-item active" href="lastyearFilesLoggedIn.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -49,25 +49,26 @@
                 
             </div>
             <div class="navbar-nav ml-auto">
-                <a href="loginpage.php" class="nav-item nav-link">Connexion</a>
+                 <a href="loginpage.php" class="nav-item nav-link">Connexion</a>
             </div>
         </div>
     </nav> 
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-left">Fichiers première</h2>
-    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la première.</div>
-     <div>Matières:</div>
-      <ul>
-        <li><a href="#">Mathématiques</a></li>
-        <li><a href="#">Physique</a></li>
-        <li><a href="#">Java</a></li>
-        <li><a href="#">Python</a></li>
-        <li><a href="#">Anglais</a></li>
-      </ul>
- </div>
+    <h2 class="text-left">Mathématiques</h2>
+    </div>
+   <ul>
+    <li>Cours(.ZIP/.RAR)</li>
+    <li>Exos:</li>
+    <li>Corrigés:</li>
+    <div><strong>Il faut se connecter pour avoir accés aux corrigés</strong></div></li>
+    <li>Enregistrement des cours(Vidéo):</li>
+    <strong>Il faut se connecter pour avoir accés aux vidéos</strong>
+    </div>
+  </ul>
 
+</div>
   <footer class="panel-footer">
     <div class="container">
     

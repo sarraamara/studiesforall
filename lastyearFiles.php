@@ -28,8 +28,8 @@
                 <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
                   
                   <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
-                  <a class="dropdown-item active" href="firstyearFiles.php">Première</a>
-                  <a class="dropdown-item" href="lastyearFiles.php">Terminale</a>
+                  <a class="dropdown-item" href="firstyearFiles.php">Première</a>
+                  <a class="dropdown-item active" href="lastyearFiles.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -56,11 +56,11 @@
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-left">Fichiers première</h2>
-    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la première.</div>
-     <div>Matières:</div>
+    <h2 class="text-left">Fichiers terminale</h2>
+    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la terminale.</div>
+    <div>Matières:</div>
       <ul>
-        <li><a href="#">Mathématiques</a></li>
+        <li><a href="mathLastYear.php">Mathématiques</a></li>
         <li><a href="#">Physique</a></li>
         <li><a href="#">Java</a></li>
         <li><a href="#">Python</a></li>

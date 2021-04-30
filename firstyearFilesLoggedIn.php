@@ -73,7 +73,17 @@ if(isset($_POST['but_logout'])){
 
   <div id="main-content" class="container">
     <h2 class="text-left">Fichiers première</h2>
-    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la première.
+
+    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la première.</div>
+      <div>Matières:</div>
+      <ul>
+        <li><a href="#">Mathématiques</a></li>
+        <li><a href="#">Physique</a></li>
+        <li><a href="#">Java</a></li>
+        <li><a href="#">Python</a></li>
+        <li><a href="#">Anglais</a></li>
+      </ul>
+
  </div>
 
   <footer class="panel-footer">
