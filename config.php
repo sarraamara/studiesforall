@@ -1,14 +1,12 @@
 <?php
 session_start();
-$host = "localhost"; /* Host name */
-$user = "postgres"; /* User */
-$password = "admin"; /* Password */
-$port="5432";
-$dbname = "webusers"; /* Database name */
-$connection_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password} ";
-$dbconn = pg_connect($connection_string);
+$host = "127.0.0.1:3307"; /* Host name */
+$user = "root"; /* User */
+$password = ""; /* Password */
+$dbname = "dbstudies"; /* Database name */
+$dbconn =  mysqli_connect($host, $user, $password,$dbname);
 
 // Check connection
 if (!$dbconn) {
-  die("Connection failed: ");
+  die("Connection failed: " . mysqli_connect_error());
 }

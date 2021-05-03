@@ -4,14 +4,14 @@ include "config.php";
 
 if(isset($_POST['but_submit'])){
 
-    $uname = pg_escape_string($dbconn,$_POST['txt_uname']);
-    $password = pg_escape_string($dbconn,$_POST['txt_pwd']);
+    $uname = mysqli_real_escape_string($dbconn,$_POST['txt_uname']);
+    $password = mysqli_real_escape_string($dbconn,$_POST['txt_pwd']);
 
     if ($uname != "" && $password != ""){
 
         $sql_query = "select * from users where username='".$uname."' and password='".$password."'";
-        $result = pg_query($dbconn,$sql_query);
-        $count= pg_num_rows($result);
+        $result = mysqli_query($dbconn,$sql_query);
+        $count= mysqli_num_rows($result);
         if($count > 0){
             $_SESSION['uname'] = $uname;
             header('Location: indexLoggedIn.php');

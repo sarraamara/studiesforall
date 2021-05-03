@@ -11,6 +11,17 @@ if(isset($_POST['but_logout'])){
     session_destroy();
     header('Location: index.php');
 }
+if(isset($_POST['Ajouter'])){
+  $selectedValue=$_POST['format'];
+  $target_dir = "uploads/";
+  $category="MathLastYear";
+  $location = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+  $sql="INSERT INTO lessons(format,category,fileLocation) VALUES 
+    ('".$selectedValue."','".$category."','".$location."')";
+    echo $result = mysqli_query($dbconn,$sql);
+  header('Location: mathLastLoggedIn.php');
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,13 +32,9 @@ if(isset($_POST['but_logout'])){
     <title>studiesforall</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-     <script src="js/jquery.slim.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/ajax-utils.js"></script>
-    <script src="js/script.js"></script>
   </head>
 <body>
-  
+    
         
   <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -76,11 +83,13 @@ if(isset($_POST['but_logout'])){
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-left">Mathématiques</h2>
+     <form method='post' action="" enctype="multipart/form-data">
+    <h2 class="text-left" name="mathLastYear">Mathématiques</h2>
 
     <div class="upload-files"> 
+     
        <h3 class="text-center">Ajout de fichiers</h3>
-       <div><input type="file" id="myFile"></div>
+       <div><input type="file" name="fileToUpload" id="myFile"></div>
       <div>Indiquer le format:</div>
       
       <input type="radio" id="Cours" name="format" value="Cours"
@@ -92,16 +101,21 @@ if(isset($_POST['but_logout'])){
       <label for="Exo">Exo</label>
       <input type="radio" id="Corrigé" name="format" value="Corrigé">
       <label for="Corrigé">Corrigé</label>
-      <div class="text-right"><button onclick="addFileAndUpdateViewFunc()">Ajouter</button></div>
+      <div class="text-right"><button type="submit" name="Ajouter">Ajouter</button></div>
+    
     </div>
-    <script>
-      
-    </script>
+    </form>
    <p id="demo"></p>
    <ul>
     <li>Cours(.ZIP/.RAR)
-      <ul id="coursListe">
-        
+      <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Cours' AND category='MathLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+          }
+          ?>
       </ul>
     </li>
     <li>Exos:</li>
