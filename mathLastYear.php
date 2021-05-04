@@ -1,3 +1,6 @@
+ <?php
+include "config.php";
+?>
  <!doctype html>
 <html lang="en">
   <head>
@@ -27,9 +30,9 @@
                 </button>
                 <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
                   
-                  <a class="dropdown-item" href="secondyearFilesLoggedIn.php">Seconde</a>
-                  <a class="dropdown-item" href="firstyearFilesLoggedIn.php">Première</a>
-                  <a class="dropdown-item active" href="lastyearFilesLoggedIn.php">Terminale</a>
+                  <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
+                  <a class="dropdown-item" href="firstyearFiles.php">Première</a>
+                  <a class="dropdown-item active" href="lastyearFiles.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -56,15 +59,35 @@
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-left">Mathématiques</h2>
+    <h2 class="text-center">Mathématiques</h2>
     </div>
    <ul>
-    <li>Cours(.ZIP/.RAR)</li>
-    <li>Exos:</li>
+    <li>Cours(.ZIP/.RAR):
+      <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Cours' AND category='MathLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+          }
+          ?>
+      </ul>
+    </li>
+    <li>Exos:
+      <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Exo' AND category='MathLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+          }
+          ?>
+      </ul>
+    </li>
     <li>Corrigés:</li>
-    <div><strong>Il faut se connecter pour avoir accés aux corrigés</strong></div></li>
+    <div><strong>Il faut se connecter pour avoir accès aux corrigés</strong></div></li>
     <li>Enregistrement des cours(Vidéo):</li>
-    <strong>Il faut se connecter pour avoir accés aux vidéos</strong>
+    <strong>Il faut se connecter pour avoir accès aux vidéos</strong>
     </div>
   </ul>
 

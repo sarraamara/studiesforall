@@ -13,13 +13,27 @@ if(isset($_POST['but_logout'])){
 }
 if(isset($_POST['Ajouter'])){
   $selectedValue=$_POST['format'];
-  $target_dir = "uploads/";
   $category="MathLastYear";
-  $location = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+  $target_dir = "uploads/".$category."/".$selectedValue."/";
+   $location = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $location)){
+    $location = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+   }
+   else{
+    echo "Error Uploading File";
+          exit;
+   }
+  
   $sql="INSERT INTO lessons(format,category,fileLocation) VALUES 
     ('".$selectedValue."','".$category."','".$location."')";
     echo $result = mysqli_query($dbconn,$sql);
   header('Location: mathLastLoggedIn.php');
+}
+if(isset($_POST['Supprimer'])){
+ $location=$_POST['Supprimer'];
+ $sql="DELETE FROM lessons WHERE fileLocation='".$location."' AND category='MathLastYear'";
+  echo $result = mysqli_query($dbconn,$sql);
+ //header('Location: mathLastLoggedIn.php');
 }
 
 ?>
@@ -84,7 +98,7 @@ if(isset($_POST['Ajouter'])){
 
   <div id="main-content" class="container">
      <form method='post' action="" enctype="multipart/form-data">
-    <h2 class="text-left" name="mathLastYear">Mathématiques</h2>
+    <h2 class="text-center">Mathématiques</h2>
 
     <div class="upload-files"> 
      
@@ -107,7 +121,7 @@ if(isset($_POST['Ajouter'])){
     </form>
    <p id="demo"></p>
    <ul>
-    <li>Cours(.ZIP/.RAR)
+    <li>Cours(.ZIP/.RAR):
       <ul>
         <?php 
 
@@ -118,9 +132,39 @@ if(isset($_POST['Ajouter'])){
           ?>
       </ul>
     </li>
-    <li>Exos:</li>
-    <li>Corrigés:</li>
-    <li>Enregistrement des cours(Vidéo):</li>
+    <li>Exos:
+      <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Exo' AND category='MathLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<li><form method=\'post\' action=""><a href="'.$row[0].'" download>'.basename($row[0]).'</a><span><button type="submit" name="Supprimer" value="'.$row[0].'">Supprimer</button></span></div></form></li>' ;
+          }
+          ?>
+      </ul>
+    </li>
+    <li>Corrigés:
+      <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Corrigé' AND category='MathLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>';
+          }
+          ?>
+      </ul>
+    </li>
+    <li>Enregistrement des cours(Vidéo):
+       <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Enregistrement des c' AND category='MathLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+          }
+          ?>
+      </ul>
+    </li>
     </div>
   </ul>
  

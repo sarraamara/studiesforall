@@ -77,10 +77,10 @@ if(isset($_POST['but_logout'])){
     <div>Matières:</div>
       <ul>
         <li><a href="mathLastLoggedIn.php">Mathématiques</a></li>
-        <li><a href="#">Physique</a></li>
-        <li><a href="#">Java</a></li>
-        <li><a href="#">Python</a></li>
-        <li><a href="#">Anglais</a></li>
+        <li><a href="physLastLoggedIn.php">Physique</a></li>
+        <li><a href="javaLastLoggedIn.php">Java</a></li>
+        <li><a href="pythonLastLoggedIn.php">Python</a></li>
+        <li><a href="englishLastLoggedIn.php">Anglais</a></li>
       </ul>
  </div>
 

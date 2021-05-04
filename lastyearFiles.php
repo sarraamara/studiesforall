@@ -61,10 +61,10 @@
     <div>Matières:</div>
       <ul>
         <li><a href="mathLastYear.php">Mathématiques</a></li>
-        <li><a href="#">Physique</a></li>
-        <li><a href="#">Java</a></li>
-        <li><a href="#">Python</a></li>
-        <li><a href="#">Anglais</a></li>
+        <li><a href="physLastYear.php">Physique</a></li>
+        <li><a href="javaLastYear.php">Java</a></li>
+        <li><a href="pythonLastYear.php">Python</a></li>
+        <li><a href="englishLastYear.php">Anglais</a></li>
       </ul>
  </div>
 
