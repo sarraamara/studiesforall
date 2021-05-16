@@ -1,7 +1,4 @@
- <?php
-include "config.php";
-?>
- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -23,16 +20,16 @@ include "config.php";
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="indexLoggedIn.php" class="nav-item nav-link">Accueil</a>
+                <a href="index.php" class="nav-item nav-link">Accueil</a>
                 <div class="dropdown">
                 <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Fichiers lycée
                 </button>
-                <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   
                   <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
                   <a class="dropdown-item" href="firstyearFiles.php">Première</a>
-                  <a class="dropdown-item active" href="lastyearFiles.php">Terminale</a>
+                  <a class="dropdown-item" href="lastyearFiles.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -45,15 +42,7 @@ include "config.php";
                   <a class="dropdown-item" href="#">Troisième année</a>
                 </div>
               </div>
-               <div class="dropdown">
-                <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Informatique pour tous
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="javaLastYear.php">Java</a>
-                  <a class="dropdown-item" href="pythonLastYear.php">Python</a>
-                </div>
-              </div>
+               <a href="informatiquePourTous.php" class="nav-item nav-link active">Informatique pour tous</a>
                 <a href="#" class="nav-item nav-link">Conseils</a>
                 <a href="#" class="nav-item nav-link">Olympiades</a>
                 <a href="#" class="nav-item nav-link">Don</a>
@@ -61,46 +50,22 @@ include "config.php";
                 
             </div>
             <div class="navbar-nav ml-auto">
-                 <a href="loginpage.php" class="nav-item nav-link">Connexion</a>
+                <a href="loginpage.php" class="nav-item nav-link">Connexion</a>
             </div>
         </div>
     </nav> 
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-center">Physique</h2>
-    </div>
-   <ul>
-    <li>Cours(.ZIP/.RAR):
+    <h2 class="text-left">Informatique pour tous</h2>
+    <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...)</div>
+    <div>Matières:</div>
       <ul>
-        <?php 
-
-         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Cours' AND category='physLastYear'");
-         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
-          }
-          ?>
+        <li><a href="javaLastYear.php">Java</a></li>
+        <li><a href="pythonLastYear.php">Python</a></li>
       </ul>
-    </li>
-    <li>Exos:
-      <ul>
-        <?php 
+ </div>
 
-         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Exo' AND category='physLastYear'");
-         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
-          }
-          ?>
-      </ul>
-    </li>
-    <li>Corrigés:</li>
-    <div><strong>Il faut se connecter pour avoir accès aux corrigés</strong></div></li>
-    <li>Enregistrement des cours(Vidéo):</li>
-    <strong>Il faut se connecter pour avoir accès aux vidéos</strong>
-    </div>
-  </ul>
-
-</div>
   <footer class="panel-footer">
     <div class="container">
     

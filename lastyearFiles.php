@@ -42,6 +42,15 @@
                   <a class="dropdown-item" href="#">Troisième année</a>
                 </div>
               </div>
+               <div class="dropdown">
+                <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Informatique pour tous
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="javaLastYear.php">Java</a>
+                  <a class="dropdown-item" href="pythonLastYear.php">Python</a>
+                </div>
+              </div>
                 <a href="#" class="nav-item nav-link">Conseils</a>
                 <a href="#" class="nav-item nav-link">Olympiades</a>
                 <a href="#" class="nav-item nav-link">Don</a>
@@ -62,8 +71,6 @@
       <ul>
         <li><a href="mathLastYear.php">Mathématiques</a></li>
         <li><a href="physLastYear.php">Physique</a></li>
-        <li><a href="javaLastYear.php">Java</a></li>
-        <li><a href="pythonLastYear.php">Python</a></li>
         <li><a href="englishLastYear.php">Anglais</a></li>
       </ul>
  </div>

@@ -16,18 +16,23 @@ if(isset($_POST['Ajouter'])){
   $category="englishLastYear";
   $target_dir = "uploads/".$category."/".$selectedValue."/";
    $location = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $location)){
+   $label= htmlspecialchars($_POST['news']);
+   if($label=="..." || $label=='' || (trim($label, ' ') == '')){
+   echo '<script>alert("Veuillez remplir le champ nouveauté!")</script>';
+   }
+   else if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $location)){
+    $date=date("y-m-d");
+    $sql="INSERT INTO news(label,date) VALUES ('".$label."','".$date."')";
+    echo $result = mysqli_query($dbconn,$sql);
     $location = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-   }
-   else{
-    echo "Error Uploading File";
-          exit;
-   }
-  
-  $sql="INSERT INTO lessons(format,category,fileLocation) VALUES 
+    $sql="INSERT INTO lessons(format,category,fileLocation) VALUES 
     ('".$selectedValue."','".$category."','".$location."')";
     echo $result = mysqli_query($dbconn,$sql);
-  header('Location: englishLastLoggedIn.php');
+    header('Location: englishLastLoggedIn.php');
+   }
+   else{
+    echo '<script>alert("Veuillez choisir un fichier!")</script>';     
+   }
 }
 
 ?>
@@ -40,6 +45,7 @@ if(isset($_POST['Ajouter'])){
     <title>studiesforall</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 <body>
     
@@ -73,6 +79,15 @@ if(isset($_POST['Ajouter'])){
                   <a class="dropdown-item" href="#">Première année</a>
                   <a class="dropdown-item" href="#">Deuxième année</a>
                   <a class="dropdown-item" href="#">Troisième année</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Informatique pour tous
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="javaLastLoggedIn.php">Java</a>
+                  <a class="dropdown-item" href="pythonLastLoggedIn.php">Python</a>
                 </div>
               </div>
                 <a href="#" class="nav-item nav-link">Conseils</a>
@@ -109,6 +124,8 @@ if(isset($_POST['Ajouter'])){
       <label for="Exo">Exo</label>
       <input type="radio" id="Corrigé" name="format" value="Corrigé">
       <label for="Corrigé">Corrigé</label>
+      <div>Nouveauté: décrivez ce que vous allez rajouter</div>
+      <textarea name="news" cols="50" rows="5" style="overflow:auto;">...</textarea>
       <div class="text-right"><button type="submit" name="Ajouter">Ajouter</button></div>
     
     </div>
@@ -121,7 +138,7 @@ if(isset($_POST['Ajouter'])){
 
          $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Cours' AND category='englishLastYear'");
          while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+           echo '<li><form method=\'post\' action=""><a href="'.$row[0].'" download>'.basename($row[0]).'</a><button class="btn" type="submit" name="Supprimer" value="'.$row[0].'"><i class="fa fa-trash"></i></button></form></li>' ;
           }
           ?>
       </ul>
@@ -132,7 +149,7 @@ if(isset($_POST['Ajouter'])){
 
          $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Exo' AND category='englishLastYear'");
          while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+           echo '<li><form method=\'post\' action=""><a href="'.$row[0].'" download>'.basename($row[0]).'</a><button class="btn" type="submit" name="Supprimer" value="'.$row[0].'"><i class="fa fa-trash"></i></button></form></li>' ;
           }
           ?>
       </ul>
@@ -143,7 +160,7 @@ if(isset($_POST['Ajouter'])){
 
          $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Corrigé' AND category='englishLastYear'");
          while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+           echo '<li><form method=\'post\' action=""><a href="'.$row[0].'" download>'.basename($row[0]).'</a><button class="btn" type="submit" name="Supprimer" value="'.$row[0].'"><i class="fa fa-trash"></i></button></form></li>' ;
           }
           ?>
       </ul>
@@ -154,7 +171,7 @@ if(isset($_POST['Ajouter'])){
 
          $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Enregistrement des c' AND category='englishLastYear'");
          while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+           echo '<li><form method=\'post\' action=""><a href="'.$row[0].'" download>'.basename($row[0]).'</a><button class="btn" type="submit" name="Supprimer" value="'.$row[0].'"><i class="fa fa-trash"></i></button></form></li>' ;
           }
           ?>
       </ul>

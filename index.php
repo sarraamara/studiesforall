@@ -42,6 +42,16 @@
                   <a class="dropdown-item" href="#">Troisième année</a>
                 </div>
               </div>
+              <div class="dropdown">
+                <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Informatique pour tous
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="javaLastYear.php">Java</a>
+                  <a class="dropdown-item" href="pythonLastYear.php">Python</a>
+                </div>
+              </div>
+              
                 <a href="#" class="nav-item nav-link">Conseils</a>
                 <a href="#" class="nav-item nav-link">Olympiades</a>
                 <a href="#" class="nav-item nav-link">Don</a>
@@ -57,11 +67,13 @@
 
   <div id="main-content" class="container">
     <h2 class="text-left">Nouveautés</h2>
-    <div>29/03/2021: Test long paragraph to see:up on catnip, yet bleghbleghvomit my furball really tie the room together, thug cat . Play riveting piece on synthesizer keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep  </div>
-    <div>29/03/2021: Test keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep</div>
-    <div>29/03/2021: Test keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep</div>
-    <div>29/03/2021: Test keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep</div>
-    <div>29/03/2021: Test keyboard sit in window and stare oooh, a bird, yum shove bum in owner’s face like camera lens or toy mouse squeak roll over. Fall asleep</div>
+   <?php 
+   include "config.php";
+         $result = mysqli_query($dbconn,"SELECT date, label FROM news ORDER BY date DESC");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+           echo '<div>'.date("d/m/Y", strtotime($row[0])).' : '.$row[1].'</div>' ;
+          }
+          ?>
   </div>
 
   <footer class="panel-footer">

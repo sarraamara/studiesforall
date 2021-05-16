@@ -14,7 +14,13 @@ if(isset($_POST['but_submit'])){
         $count= mysqli_num_rows($result);
         if($count > 0){
             $_SESSION['uname'] = $uname;
-            header('Location: indexLoggedIn.php');
+            if($uname=='admin'){
+            header('Location: indexLoggedIn.php');  
+            }
+            else if($uname=='student'){
+              header('Location: studentIndex.php');
+            }
+            
         }else{
             echo "Invalid username and password";
         }
@@ -32,6 +38,7 @@ if(isset($_POST['but_submit'])){
     <title>studiesforall</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/loginPageStyle.css">
 
   </head>
 <body>
@@ -66,6 +73,15 @@ if(isset($_POST['but_submit'])){
                   <a class="dropdown-item" href="#">Troisième année</a>
                 </div>
               </div>
+               <div class="dropdown">
+                <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Informatique pour tous
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="javaLastYear.php">Java</a>
+                  <a class="dropdown-item" href="pythonLastYear.php">Python</a>
+                </div>
+              </div>
                 <a href="#" class="nav-item nav-link">Conseils</a>
                 <a href="#" class="nav-item nav-link">Olympiades</a>
                 <a href="#" class="nav-item nav-link">Don</a>
@@ -80,19 +96,25 @@ if(isset($_POST['but_submit'])){
   </header>
   <div class="containerLog">
     <form method="post" action="">
-        <div id="div_login">
-            <h1>Login</h1>
-            <div>
-                <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
+      <div class="login">
+            <div class="row">
+                <h2>Connexion</h2>
+                <div class="col-md-12">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="email" name="txt_uname" placeholder="Username">
+                    <br>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="txt_pwd" placeholder="Password">
+                </div>
             </div>
-            <div>
-                <input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password"/>
-            </div>
-            <div>
-                <input type="submit" value="Submit" name="but_submit" id="but_submit" />
-            </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="submit" id="register" name="but_submit" value="Se connecter" class="btn btn-outline-success btn-form">
+                        </div>
+                    </div>
+                </div>
     </form>
+     
 </div>
 
   <!-- jQuery (Bootstrap JS plugins depend on it) -->

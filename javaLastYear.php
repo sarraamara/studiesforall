@@ -28,11 +28,11 @@ include "config.php";
                 <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Fichiers lycée
                 </button>
-                <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   
                   <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
                   <a class="dropdown-item" href="firstyearFiles.php">Première</a>
-                  <a class="dropdown-item active" href="lastyearFiles.php">Terminale</a>
+                  <a class="dropdown-item" href="lastyearFiles.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -43,6 +43,15 @@ include "config.php";
                   <a class="dropdown-item" href="#">Première année</a>
                   <a class="dropdown-item" href="#">Deuxième année</a>
                   <a class="dropdown-item" href="#">Troisième année</a>
+                </div>
+              </div>
+               <div class="dropdown">
+                <button class="btn nav-link dropdown-toggle active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Informatique pour tous
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item active" href="javaLastYear.php">Java</a>
+                  <a class="dropdown-item" href="pythonLastYear.php">Python</a>
                 </div>
               </div>
                 <a href="#" class="nav-item nav-link">Conseils</a>

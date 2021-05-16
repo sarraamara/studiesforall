@@ -1,7 +1,18 @@
- <?php
+<?php
 include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['uname'])){
+    header('Location: index.php');
+}
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: index.php');
+}
 ?>
- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,9 +21,10 @@ include "config.php";
     <title>studiesforall</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 <body>
-  
+    
         
   <header>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -23,16 +35,16 @@ include "config.php";
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="indexLoggedIn.php" class="nav-item nav-link">Accueil</a>
+                <a href="studentIndex.php" class="nav-item nav-link">Accueil</a>
                 <div class="dropdown">
                 <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Fichiers lycée
                 </button>
-                <div class="dropdown-menu active" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   
-                  <a class="dropdown-item" href="secondyearFiles.php">Seconde</a>
-                  <a class="dropdown-item" href="firstyearFiles.php">Première</a>
-                  <a class="dropdown-item active" href="lastyearFiles.php">Terminale</a>
+                  <a class="dropdown-item" href="studentsecondyear.php">Seconde</a>
+                  <a class="dropdown-item" href="studentfirstyear.php">Première</a>
+                  <a class="dropdown-item" href="studentlastyear.php">Terminale</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -45,37 +57,39 @@ include "config.php";
                   <a class="dropdown-item" href="#">Troisième année</a>
                 </div>
               </div>
-               <div class="dropdown">
-                <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown">
+                <button class="btn nav-link dropdown-toggle active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Informatique pour tous
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="javaLastYear.php">Java</a>
-                  <a class="dropdown-item" href="pythonLastYear.php">Python</a>
+                  <a class="dropdown-item active" href="studentjava.php">Java</a>
+                  <a class="dropdown-item" href="studentpython.php">Python</a>
                 </div>
               </div>
                 <a href="#" class="nav-item nav-link">Conseils</a>
                 <a href="#" class="nav-item nav-link">Olympiades</a>
                 <a href="#" class="nav-item nav-link">Don</a>
                 <a href="#" class="nav-item nav-link">Nous rejoindre</a>
-                
+                  
             </div>
             <div class="navbar-nav ml-auto">
-                 <a href="loginpage.php" class="nav-item nav-link">Connexion</a>
+                <form method='post' action="">
+              <input type="submit" value="Logout" name="but_logout">
+                       </form>
             </div>
         </div>
     </nav> 
   </header>
 
   <div id="main-content" class="container">
-    <h2 class="text-center">Physique</h2>
-    </div>
+    
+    <h2 class="text-center">Java</h2>
    <ul>
     <li>Cours(.ZIP/.RAR):
       <ul>
         <?php 
 
-         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Cours' AND category='physLastYear'");
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Cours' AND category='javaLastYear'");
          while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
            echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
           }
@@ -86,21 +100,40 @@ include "config.php";
       <ul>
         <?php 
 
-         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Exo' AND category='physLastYear'");
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Exo' AND category='javaLastYear'");
          while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-           echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+            echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
           }
           ?>
       </ul>
     </li>
-    <li>Corrigés:</li>
-    <div><strong>Il faut se connecter pour avoir accès aux corrigés</strong></div></li>
-    <li>Enregistrement des cours(Vidéo):</li>
-    <strong>Il faut se connecter pour avoir accès aux vidéos</strong>
+    <li>Corrigés:
+      <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Corrigé' AND category='javaLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+            echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+          }
+          ?>
+      </ul>
+    </li>
+    <li>Enregistrement des cours(Vidéo):
+       <ul>
+        <?php 
+
+         $result = mysqli_query($dbconn,"SELECT fileLocation FROM lessons WHERE format='Enregistrement des c' AND category='javaLastYear'");
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+            echo '<li><a href="'.$row[0].'" download>'.basename($row[0]).'</a></li>' ;
+          }
+          ?>
+      </ul>
+    </li>
     </div>
   </ul>
+ 
+ </div>
 
-</div>
   <footer class="panel-footer">
     <div class="container">
     
