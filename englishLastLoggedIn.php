@@ -34,7 +34,12 @@ if(isset($_POST['Ajouter'])){
     echo '<script>alert("Veuillez choisir un fichier!")</script>';     
    }
 }
-
+if(isset($_POST['Supprimer'])){
+ $location=$_POST['Supprimer'];
+ $sql="DELETE FROM lessons WHERE fileLocation='".$location."' AND category='englishLastYear'";
+  echo $result = mysqli_query($dbconn,$sql);
+ header('Location: englishLastLoggedIn.php');
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -76,9 +81,9 @@ if(isset($_POST['Ajouter'])){
                   Fichiers collège
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Première année</a>
-                  <a class="dropdown-item" href="#">Deuxième année</a>
-                  <a class="dropdown-item" href="#">Troisième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Première année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Deuxième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Troisième année</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -90,10 +95,10 @@ if(isset($_POST['Ajouter'])){
                   <a class="dropdown-item" href="pythonLastLoggedIn.php">Python</a>
                 </div>
               </div>
-                <a href="#" class="nav-item nav-link">Conseils</a>
-                <a href="#" class="nav-item nav-link">Olympiades</a>
-                <a href="#" class="nav-item nav-link">Don</a>
-                <a href="#" class="nav-item nav-link">Nous rejoindre</a>
+               <a href="conseilsL.php" class="nav-item nav-link">Conseils</a>
+                <a href="olympiadesL.php" class="nav-item nav-link">Olympiades</a>
+                <a href="donL.php" class="nav-item nav-link">Don</a>
+                <a href="joinL.php" class="nav-item nav-link">Nous rejoindre</a>
                   
             </div>
             <div class="navbar-nav ml-auto">

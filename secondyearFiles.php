@@ -37,9 +37,9 @@
                   Fichiers collège
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Première année</a>
-                  <a class="dropdown-item" href="#">Deuxième année</a>
-                  <a class="dropdown-item" href="#">Troisième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Première année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Deuxième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Troisième année</a>
                 </div>
               </div>
                <div class="dropdown">
@@ -51,10 +51,10 @@
                   <a class="dropdown-item" href="pythonLastYear.php">Python</a>
                 </div>
               </div>
-                <a href="#" class="nav-item nav-link">Conseils</a>
-                <a href="#" class="nav-item nav-link">Olympiades</a>
-                <a href="#" class="nav-item nav-link">Don</a>
-                <a href="#" class="nav-item nav-link">Nous rejoindre</a>
+                <a href="conseils.php" class="nav-item nav-link">Conseils</a>
+                <a href="olympiades.php" class="nav-item nav-link">Olympiades</a>
+                <a href="don.php" class="nav-item nav-link">Don</a>
+                <a href="join.php" class="nav-item nav-link">Nous rejoindre</a>
                 
             </div>
             <div class="navbar-nav ml-auto">
@@ -69,9 +69,9 @@
     <div>Ici vous trouverez tous les fichiers(Exos,corrections,examens,...) de la seconde.</div>
    <div>Matières:</div>
       <ul>
-        <li><a href="#">Mathématiques</a></li>
-        <li><a href="#">Physique</a></li>
-        <li><a href="#">Anglais</a></li>
+        <li><a href="mathSecondYear.php">Mathématiques</a></li>
+        <li><a href="phySecondYear.php">Physique</a></li>
+        <li><a href="engSecondYear.php">Anglais</a></li>
       </ul>
 
  </div>

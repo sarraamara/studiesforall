@@ -13,9 +13,18 @@
 .login>.row>h2 {
     margin: auto;
 }
-
+.btn{
+    color: black;
+    border-color: black;
+}
 .btn-form {
     width: 100%;
     margin-top: 20px;
+    color: black;
+    border-color: black;
 }
 
+.btn-outline-success {
+    color: black;
+    border-color: black;
+}

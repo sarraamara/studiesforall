@@ -40,9 +40,9 @@ include "config.php";
                   Fichiers collège
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Première année</a>
-                  <a class="dropdown-item" href="#">Deuxième année</a>
-                  <a class="dropdown-item" href="#">Troisième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Première année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Deuxième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Troisième année</a>
                 </div>
               </div>
               <div class="dropdown">
@@ -54,10 +54,10 @@ include "config.php";
                   <a class="dropdown-item" href="pythonLastYear.php">Python</a>
                 </div>
               </div>
-                <a href="#" class="nav-item nav-link">Conseils</a>
-                <a href="#" class="nav-item nav-link">Olympiades</a>
-                <a href="#" class="nav-item nav-link">Don</a>
-                <a href="#" class="nav-item nav-link">Nous rejoindre</a>
+                <a href="conseils.php" class="nav-item nav-link">Conseils</a>
+                <a href="olympiades.php" class="nav-item nav-link">Olympiades</a>
+                <a href="don.php" class="nav-item nav-link">Don</a>
+                <a href="join.php" class="nav-item nav-link">Nous rejoindre</a>
                 
             </div>
             <div class="navbar-nav ml-auto">

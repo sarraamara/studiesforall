@@ -51,9 +51,9 @@ if(isset($_POST['but_logout'])){
                   Fichiers collège
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Première année</a>
-                  <a class="dropdown-item" href="#">Deuxième année</a>
-                  <a class="dropdown-item" href="#">Troisième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Première année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Deuxième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Troisième année</a>
                 </div>
               </div>
                <div class="dropdown">
@@ -65,11 +65,10 @@ if(isset($_POST['but_logout'])){
                   <a class="dropdown-item" href="studentpython.php">Python</a>
                 </div>
               </div>
-                <a href="#" class="nav-item nav-link">Conseils</a>
-                <a href="#" class="nav-item nav-link">Olympiades</a>
-                <a href="#" class="nav-item nav-link">Don</a>
-                <a href="#" class="nav-item nav-link">Nous rejoindre</a>
-                
+                <a href="conseilsS.php" class="nav-item nav-link">Conseils</a>
+                <a href="olympiadesS.php" class="nav-item nav-link">Olympiades</a>
+                <a href="donS.php" class="nav-item nav-link">Don</a>
+                <a href="joinS.php" class="nav-item nav-link">Nous rejoindre</a>
             </div>
             <div class="navbar-nav ml-auto">
                <form method='post' action="">

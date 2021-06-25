@@ -22,7 +22,7 @@ if(isset($_POST['but_submit'])){
             }
             
         }else{
-            echo "Invalid username and password";
+            echo '<script>alert("Nom d\'utilisateur et/ou mot de passe sont incorrectes")</script>';
         }
 
     }
@@ -36,9 +36,10 @@ if(isset($_POST['but_submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>studiesforall</title>
+    
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/loginPageStyle.css">
+   <link rel="stylesheet" href="css/loginPageStyle.css">
 
   </head>
 <body>
@@ -68,9 +69,9 @@ if(isset($_POST['but_submit'])){
                   Fichiers collège
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Première année</a>
-                  <a class="dropdown-item" href="#">Deuxième année</a>
-                  <a class="dropdown-item" href="#">Troisième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Première année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Deuxième année</a>
+                  <a class="dropdown-item" href="comingsoon.php">Troisième année</a>
                 </div>
               </div>
                <div class="dropdown">
@@ -82,10 +83,10 @@ if(isset($_POST['but_submit'])){
                   <a class="dropdown-item" href="pythonLastYear.php">Python</a>
                 </div>
               </div>
-                <a href="#" class="nav-item nav-link">Conseils</a>
-                <a href="#" class="nav-item nav-link">Olympiades</a>
-                <a href="#" class="nav-item nav-link">Don</a>
-                <a href="#" class="nav-item nav-link">Nous rejoindre</a>
+                <a href="conseils.php" class="nav-item nav-link">Conseils</a>
+                <a href="olympiades.php" class="nav-item nav-link">Olympiades</a>
+                <a href="don.php" class="nav-item nav-link">Don</a>
+                <a href="join.php" class="nav-item nav-link">Nous rejoindre</a>
                 
             </div>
             <div class="navbar-nav ml-auto">
@@ -100,10 +101,10 @@ if(isset($_POST['but_submit'])){
             <div class="row">
                 <h2>Connexion</h2>
                 <div class="col-md-12">
-                    <label for="username">Username</label>
+                    <label for="username">Nom d'utilisateur</label>
                     <input type="text" class="form-control" id="email" name="txt_uname" placeholder="Username">
                     <br>
-                    <label for="password">Password</label>
+                    <label for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" name="txt_pwd" placeholder="Password">
                 </div>
             </div>
